@@ -1,0 +1,31 @@
+<button
+  matButton
+  utilsTrackClick="testeRota"
+  utilsTrackClickDetails="detailsRota"
+  (click)="getPostById()"
+>
+  Basic
+</button>
+<button (click)="crash()">Simular erro</button>
+
+<utils-loading-spinner></utils-loading-spinner>
+
+<h2>Posts</h2>
+<ul>
+  <li *ngFor="let post of posts">
+    <strong>{{ post.title }}</strong
+    ><br />
+    {{ post.body }}
+  </li>
+</ul>
+
+<ng-container *ngIf="post">
+  <h2>Posts</h2>
+  <ul>
+    <li>
+      <strong>{{ post.title }}</strong
+      ><br />
+      {{ post.body }}
+    </li>
+  </ul>
+</ng-container>

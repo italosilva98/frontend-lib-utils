@@ -1,27 +1,135 @@
-# AngularUtilsWorkspace
+# 🚀 frontend-utils
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+> Biblioteca Angular com utilitários, diretivas, componentes e serviços reutilizáveis para padronizar e acelerar o desenvolvimento front-end na empresa.
 
-## Development server
+## 📦 Instalação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+npm install frontend-utils
+```
 
-## Code scaffolding
+Ou, se estiver em monorepo Angular:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+ng add frontend-utils
+```
 
-## Build
+## 🔧 Importação do Módulo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+No `AppModule` ou no módulo do seu projeto:
 
-## Running unit tests
+```ts
+import { FrontendUtilsModule } from 'frontend-utils';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  imports: [FrontendUtilsModule],
+})
+export class AppModule {}
+```
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🧰 Funcionalidades Disponíveis
 
-## Further help
+### ✅ Diretivas
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Diretiva              | Descrição                                      | Exemplo de uso                              |
+|-----------------------|-----------------------------------------------|---------------------------------------------|
+| `utilsTrackClick`     | Tagueamento de clique para GA4 ou Datadog     | `<button utilsTrackClick="botao-comprar">`  |
+
+---
+
+### 🧪 Pipes
+
+| Pipe           | Descrição                            | Exemplo                         |
+|----------------|---------------------------------------|----------------------------------|
+| `truncateText` | Limita texto com reticências (...)    | `{{ texto | truncateText: 30 }}` |
+
+---
+
+### 📦 Services
+
+- **LoggerService**
+  - Envia logs para console, Datadog ou outro sistema
+- **ToastService** *(requer Angular Material)*
+  - Exibe notificações: `toast.success('Mensagem')`
+- **LoadingService**
+  - Controla spinner global
+- **TranslationService**
+  - Traduções simples: `translation.translate('greeting')`
+
+---
+
+### 🔁 Interceptors
+
+| Interceptor          | Descrição                                           |
+|----------------------|------------------------------------------------------|
+| `LoadingInterceptor` | Ativa spinner automaticamente em requisições HTTP   |
+
+---
+
+### 🔐 Guards
+
+| Guard       | Descrição                             |
+|-------------|----------------------------------------|
+| `AuthGuard` | Protege rotas com base em token local  |
+
+---
+
+### 🌀 Componentes
+
+| Componente               | Descrição                         |
+|--------------------------|------------------------------------|
+| `utils-loading-spinner` | Overlay de carregamento global     |
+
+Exemplo de uso:
+
+```html
+<utils-loading-spinner></utils-loading-spinner>
+```
+
+---
+
+## 🎨 Estilos Globais (opcional)
+
+Adicione ao seu `styles.scss`:
+
+```scss
+.toast-success {
+  background-color: #4caf50 !important;
+  color: white;
+}
+
+.toast-error {
+  background-color: #f44336 !important;
+  color: white;
+}
+
+.toast-info {
+  background-color: #2196f3 !important;
+  color: white;
+}
+```
+
+---
+
+## 📌 Roadmap (ideias futuras)
+
+- [ ] Integração com GA4 completa
+- [ ] Componentes com Theme customizável
+- [ ] Schematics (`ng generate page --with-tracker`)
+- [ ] Integração com Storybook
+- [ ] FormUtils e Validators customizados
+
+---
+
+## 👨‍💻 Contribuindo
+
+Sinta-se livre para sugerir melhorias, criar novos utilitários e evoluir esse pacote junto com a guilda de front-end. 💡
+
+---
+
+## 🧠 Manutenção
+
+Mantido por: **@seu-usuario**  
+Time de Front-end da Empresa 🚀
